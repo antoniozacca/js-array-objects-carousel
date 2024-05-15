@@ -23,17 +23,16 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
- 
 
 const parent = document.querySelector(".items");
 const next = document.querySelector(".next");
 const prev = document.querySelector(".prev");
 
+
 for(let i=0; i<images.length; i++){
 
     const item = document.createElement('div');
     item.classList.add('item');
-
     // image
     let img = document.createElement("img");
     img.src= images[i].image;
@@ -48,25 +47,31 @@ for(let i=0; i<images.length; i++){
     let testo= document.createElement("p");
     testo.append(images[i].text)
     item.appendChild(testo)
-
+    
 
     parent.appendChild(item)
+
 }
 
 let active = 0;
-
 document.querySelectorAll('.item')[active].classList.add('active')
 
-next.addEventListener('click', function(){
+next.addEventListener('click', function (){
     active++;
+    if (active === document.querySelectorAll('.item').length){
+        active=0;
+    }
     
     document.querySelector('.item.active').classList.remove('active');
     document.querySelectorAll('.item')[active].classList.add('active');
-    
+   
 })
-
 prev.addEventListener('click', function(){
     active--;
+    console.log(active);
+    if (active< 0){
+        active= document.querySelectorAll('.item').length-1;
+    }
     document.querySelector('.item.active').classList.remove('active');
     document.querySelectorAll('.item')[active].classList.add('active');
     

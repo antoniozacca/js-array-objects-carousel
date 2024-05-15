@@ -3,10 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-img{
-    height: 100%;
-    width: 100%;
-}
+
 .display-none{
     display: none;
 }
@@ -41,6 +38,8 @@ img{
 
 .item.active {
     display: block;
+    height: 100%;
+    
 }
 
 .prev, .next {
