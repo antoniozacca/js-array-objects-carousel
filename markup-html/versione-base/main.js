@@ -25,31 +25,50 @@ const images = [
 ];
  
 
-// const primaImmagine = document.getElementById("immagine-primaria");
-// let img = document.createElement("img");
-// img.src= images[0].image;
-// primaImmagine.appendChild(img)
-// let titolo = document.createElement("h1");
-// titolo.append(images[0].title);
-// primaImmagine.appendChild(titolo)
-// let testo= document.createElement("p");
-// testo.append(images[0].text)
-// primaImmagine.appendChild(testo)
-
+const parent = document.querySelector(".items");
 const next = document.querySelector(".next");
-next.addEventListener('click', function(){
-    for(let i=0; i<images.length; i++){
-        const primaImmagine = document.getElementById("immagine-primaria");
-let img = document.createElement("img");
-img.src= images[i].image;
-primaImmagine.appendChild(img)
-let titolo = document.createElement("h1");
-titolo.append(images[i].title);
-primaImmagine.appendChild(titolo)
-let testo= document.createElement("p");
-testo.append(images[i].text)
-primaImmagine.appendChild(testo)
+const prev = document.querySelector(".prev");
 
-    }
+for(let i=0; i<images.length; i++){
+
+    const item = document.createElement('div');
+    item.classList.add('item');
+
+    // image
+    let img = document.createElement("img");
+    img.src= images[i].image;
+    item.appendChild(img)
+
+    // titolo
+    let titolo = document.createElement("h1");
+    titolo.append(images[i].title);
+    item.appendChild(titolo)
+
+    // testo
+    let testo= document.createElement("p");
+    testo.append(images[i].text)
+    item.appendChild(testo)
+
+
+    parent.appendChild(item)
+}
+
+let active = 0;
+
+document.querySelectorAll('.item')[active].classList.add('active')
+
+next.addEventListener('click', function(){
+    active++;
+    
+    document.querySelector('.item.active').classList.remove('active');
+    document.querySelectorAll('.item')[active].classList.add('active');
+    
+})
+
+prev.addEventListener('click', function(){
+    active--;
+    document.querySelector('.item.active').classList.remove('active');
+    document.querySelectorAll('.item')[active].classList.add('active');
+    
 })
 
